@@ -33,7 +33,7 @@ get "/" do
     view "places"
 end
 
-# event details (aka "show")
+# place details (aka "show")
 get "/places/:id" do
     puts "params: #{params}"
 
@@ -45,10 +45,17 @@ get "/places/:id" do
     @recommend_count = reviews_table.where(place_id: @place[:id], recommend: true).count
     @noreco_count = reviews_table.where(place_id: @place[:id], recommend: false).count
 
+    #geocode
+    # results = Geocoder.search(@place[:location])
+    # @georesults = results.first.coordinates # => [lat, long]
+    # @lat = @georesults[0]
+    # @long = @georesults[1]
+    # @lat_long = "#{@lat},#{@long}"
+
     view "place"
 end
 
-# display the rsvp form (aka "new")
+# display the review form (aka "new")
 get "/places/:id/reviews/new" do
     puts "params: #{params}"
 
@@ -56,7 +63,7 @@ get "/places/:id/reviews/new" do
     view "new_review"
 end
 
-# receive the submitted rsvp form (aka "create")
+# receive the submitted review form (aka "create")
 post "/places/:id/reviews/create" do
     puts "params: #{params}"
 
