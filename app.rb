@@ -63,11 +63,41 @@ post "/places/:id/reviews/create" do
     @place = places_table.where(id: params[:id]).to_a[0]
     # next we want to insert a row in the reviews table with the review form data
     reviews_table.insert(
-        place_id: @place[:id],
-        user_id: session["user_id"],
+        places_id: @place[:id],
+        users_id: session["users_id"],
         review: params["review"],
         recommend: params["recommend"]
     )
 
     redirect "/reviews/#{@place[:id]}"
+end
+
+# display the rsvp form (aka "edit")
+get "/reviews/:id/edit" do
+    puts "params: #{params}"
+
+    @reviews = reviews_table.where(id: params["id"]).to_a[0]
+    @place = places_table.where(id: @reviews[:places_id]).to_a[0]
+    view "edit_review"
+end
+
+# receive the submitted rsvp form (aka "update")
+post "/reviews/:id/update" do
+    puts "params: #{params}"
+
+    # find the rsvp to update
+    @reviews = reviews_table.where(id: params["id"]).to_a[0]
+    # find the rsvp's event
+    @place = places_table.where(id: @reviews[:places_id]).to_a[0]
+
+    if @current_user && @current_user[:id] == @reviews[:id]
+        reviews_table.where(id: params["id"]).update(
+            recommend: params["recommend"],
+            review: params["review"]
+        )
+
+        redirect "/reviews/#{@place[:id]}"
+    else
+        view "error"
+    end
 end

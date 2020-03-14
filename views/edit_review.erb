@@ -1,0 +1,22 @@
+<h1>Edit review for <%= @place[:title] %></h1>
+
+<form action="/reviews/<%= @reviews[:id] %>/update" method="post">
+  <div class="form-group">
+    <label>Would you Recommend?</label>
+    <select class="form-control" name="recommend">
+      <% if @reviews[:recommend] %>
+        <option value="1" selected>Yes</option>
+        <option value="0">No</option>
+      <% else %>
+        <option value="1">Yes</option>
+        <option value="0" selected>No</option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Review</label>
+    <textarea class="form-control" rows="3" name="reviews"><%= @reviews[:review] %></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
