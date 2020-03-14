@@ -6,9 +6,9 @@
         <% for reviews in @reviews %>
             <div class="media">
                 <% if reviews[:recommend] %>
-                    <i class="fas fa-thumbs-up fa-3x mr-3"></i>
+                   <i class="far fa-check-circle fa-3x mr-3"></i>
                 <% else %>
-                    <i class="fas fa-thumbs-down fa-3x mr-3"></i>
+                    <i class="far fa-times-circle fa-3x mr-3"></i>
                 <% end %>
                 <div class="media-body">
                     <h5 class="mt-0">
@@ -38,11 +38,11 @@
         <p><%= @place[:location] %></p>
         <h3>How many recommend this place?</h3>
         <p>
-            <i class="fas fa-thumbs-up fa-3x mr-3"></i>
+            <i class="far fa-check-circle fa-3x mr-3"></i>
             <%= @recommend_count %>
             </p>
         <p>
-            <i class="fas fa-thumbs-down fa-3x mr-3"></i>
+            <i class="far fa-times-circle fa-3x mr-3"></i>
             <%= @noreco_count %>
             </p>
     </div>
