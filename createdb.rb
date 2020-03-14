@@ -16,8 +16,6 @@ DB.create_table! :reviews do
   foreign_key :place_id
   foreign_key :user_id
   Boolean :recommend
-  String :name
-  String :email
   String :review, text: true
 end
 DB.create_table! :users do

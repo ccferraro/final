@@ -12,7 +12,14 @@
                 <% end %>
                 <div class="media-body">
                     <h5 class="mt-0">
+                     <%= @users_table.where(id: reviews[:user_id]).to_a[0][:name] %>
 
+                        <small>
+                         <!-- only show these links if it's my rsvp -->
+                         <% if @current_user && @current_user[:id] == reviews[:user_id] %>
+                            (<a href="/reviews/<%= reviews[:id] %>/edit">edit</a> | <a href="/reviews/<%= reviews[:id] %>/destroy">delete</a>)
+                         <% end %>
+                        </small>
                     </h5>
                     <%= reviews[:review] %>
                 </div>

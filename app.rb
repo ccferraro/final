@@ -66,12 +66,10 @@ post "/places/:id/reviews/create" do
     reviews_table.insert(
         place_id: @place[:id],
         user_id: session["user_id"],
-        name: params["name"],
-        email: params["email"],
         review: params["review"],
         recommend: params["recommend"]
     )
-
+  
     redirect "/places/#{@place[:id]}"
 end
 
