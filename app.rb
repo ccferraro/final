@@ -4,7 +4,8 @@ require "sinatra/reloader" if development?                                      
 require "sequel"                                                                      #
 require "logger"                                                                      #
 require "twilio-ruby"                                                                 #
-require "bcrypt"                                                                      #
+require "bcrypt"        
+require "geocoder"                                                                    #
 connection_string = ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/development.sqlite3"  #
 DB ||= Sequel.connect(connection_string)                                              #
 DB.loggers << Logger.new($stdout) unless DB.loggers.size > 0                          #
@@ -45,12 +46,12 @@ get "/places/:id" do
     @recommend_count = reviews_table.where(place_id: @place[:id], recommend: true).count
     @noreco_count = reviews_table.where(place_id: @place[:id], recommend: false).count
 
-    #geocode
-    # results = Geocoder.search(@place[:location])
-    # @georesults = results.first.coordinates # => [lat, long]
-    # @lat = @georesults[0]
-    # @long = @georesults[1]
-    # @lat_long = "#{@lat},#{@long}"
+    # geocode
+    results = Geocoder.search(@place[:location])
+    @georesults = results.first.coordinates # => [lat, long]
+    @lat = @georesults[0]
+    @long = @georesults[1]
+    @lat_long = "#{@lat},#{@long}"
 
     view "place"
 end

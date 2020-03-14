@@ -34,7 +34,7 @@ places_table.insert(title: "Gite Le Moulin",
 
 places_table.insert(title: "Hotel Edelweiss", 
                     description: "Set at the foot of Mont Blanc, this cozy, family-run mountain hotel is 8 minutes' walk from Courmayeur Mont Blanc Funivie tramway and 7 km from Pointe Helbronner mountain.",
-                    location: "Via Guglielmo Marconi, 42, 11013 Courmayeur AO, Italy")
+                    location: "Str. Grand Ru, 1, 11013 Courmayeur AO, Italy")
 
 places_table.insert(title: "La Folie Douce", 
                     description: "This hip hotel with ski-in/ski-out access is 8 minutes' walk from Chamonix-Mont-Blanc train station, and within 12 km of Mont Blanc and Le Brévent mountains.",
