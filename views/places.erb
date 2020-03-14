@@ -1,0 +1,7 @@
+<h1>All Lodging Locations Along the TMB</h1>
+
+
+<% for places in @places %>
+    <p><a href="/places/<%= places[:id] %>"><%= places[:title] %></a></p>
+<% end %>
+
