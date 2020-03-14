@@ -2,6 +2,8 @@
 
 
 <% for places in @places %>
-    <p><a href="/places/<%= places[:id] %>"><%= places[:title] %></a></p>
+    <p>
+        <a href="/places/<%= places[:id] %>"><%= places[:title] %></a>
+    </p>
 <% end %>
 

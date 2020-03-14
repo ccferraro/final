@@ -13,8 +13,8 @@ DB.create_table! :places do
 end
 DB.create_table! :reviews do
   primary_key :id
-  foreign_key :places_id
-  foreign_key :users_id
+  foreign_key :place_id
+  foreign_key :user_id
   Boolean :recommend
   String :name
   String :email

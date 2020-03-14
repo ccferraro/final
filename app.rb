@@ -41,9 +41,9 @@ get "/places/:id" do
     @place = places_table.where(id: params[:id]).to_a[0]
     pp @place
     
-    @reviews = reviews_table.where(places_id: @place[:id]).to_a
-    @recommend_count = reviews_table.where(places_id: @place[:id], recommend: true).count
-    @noreco_count = reviews_table.where(places_id: @place[:id], recommend: false).count
+    @reviews = reviews_table.where(place_id: @place[:id]).to_a
+    @recommend_count = reviews_table.where(place_id: @place[:id], recommend: true).count
+    @noreco_count = reviews_table.where(place_id: @place[:id], recommend: false).count
 
     view "place"
 end
@@ -64,8 +64,10 @@ post "/places/:id/reviews/create" do
     @place = places_table.where(id: params[:id]).to_a[0]
     # next we want to insert a row in the reviews table with the review form data
     reviews_table.insert(
-        places_id: @place[:id],
-        users_id: session["users_id"],
+        place_id: @place[:id],
+        user_id: session["user_id"],
+        name: params["name"],
+        email: params["email"],
         review: params["review"],
         recommend: params["recommend"]
     )
@@ -78,7 +80,7 @@ get "/reviews/:id/edit" do
     puts "params: #{params}"
 
     @reviews = reviews_table.where(id: params["id"]).to_a[0]
-    @place = places_table.where(id: @reviews[:places_id]).to_a[0]
+    @place = places_table.where(id: @reviews[:place_id]).to_a[0]
     view "edit_review"
 end
 
@@ -89,7 +91,7 @@ post "/reviews/:id/update" do
     # find the rsvp to update
     @reviews = reviews_table.where(id: params["id"]).to_a[0]
     # find the rsvp's event
-    @place = places_table.where(id: @reviews[:places_id]).to_a[0]
+    @place = places_table.where(id: @reviews[:place_id]).to_a[0]
 
     if @current_user && @current_user[:id] == @reviews[:id]
         reviews_table.where(id: params["id"]).update(
@@ -108,7 +110,7 @@ get "/reviews/:id/destroy" do
     puts "params: #{params}"
 
     reviews = reviews_table.where(id: params["id"]).to_a[0]
-    @place = places_table.where(id: reviews[:places_id]).to_a[0]
+    @place = places_table.where(id: reviews[:place_id]).to_a[0]
 
     reviews_table.where(id: params["id"]).delete
 
