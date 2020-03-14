@@ -91,16 +91,14 @@ post "/reviews/:id/update" do
     # find the rsvp's event
     @place = places_table.where(id: @reviews[:place_id]).to_a[0]
 
-    if @current_user && @current_user[:id] == @reviews[:id]
+    @current_user && @current_user[:id] == @reviews[:id]
         reviews_table.where(id: params["id"]).update(
             recommend: params["recommend"],
             review: params["review"]
         )
 
-        redirect "/reviews/#{@place[:id]}"
-    else
-        view "error"
-    end
+       view "update_review"
+   
 end
 
 # delete the rsvp (aka "destroy")
