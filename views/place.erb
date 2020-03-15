@@ -34,7 +34,7 @@
         </p>
     </div>
     <div class="col-sm-3">
-        <h3>Where?</h3>
+        <h4>Location</h4>
         <p><%= @place[:location] %></p>
               
         <iframe
@@ -44,7 +44,7 @@
             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw&q=<%= @lat_long %>&zoom=12" allowfullscreen>
         </iframe>
 
-        <h3>How many recommend this place?</h3>
+        <h4>How many recommend this place?</h4>
         <p>
             <i class="far fa-check-circle fa-3x mr-3"></i>
             <%= @recommend_count %>
