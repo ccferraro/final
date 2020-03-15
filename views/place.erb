@@ -3,6 +3,7 @@
         <h1><%= @place[:title] %></h1>
         <p><%= @place[:description] %></p>
 
+        <h4> Reviews </h4>
         <% for reviews in @reviews %>
             <div class="media">
                 <% if reviews[:recommend] %>
@@ -46,11 +47,11 @@
 
         <h4>How many recommend this place?</h4>
         <p>
-            <i class="far fa-check-circle fa-3x mr-3"></i>
+            <i class="far fa-check-circle fa-2x mr-3"></i>
             <%= @recommend_count %>
             </p>
         <p>
-            <i class="far fa-times-circle fa-3x mr-3"></i>
+            <i class="far fa-times-circle fa-2x mr-3"></i>
             <%= @noreco_count %>
             </p>
     </div>
