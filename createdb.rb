@@ -28,16 +28,16 @@ end
 # Insert initial (seed) data
 places_table = DB.from(:places)
 
-places_table.insert(title: "Gite Le Moulin", 
-                    description: "At the foot of the famous Mont Blanc between the glaciers of Tour and Argentiere located in an old windmill you will find Le Moulin gite, the perfect place to stay for setting out on sections of your GR Tour du Mont Blanc, close to the Tour Col de Balme and a stones throw from the Aiguilles Rouges.",
-                    location: "32 Chemin du Moulin des Frasserands, 74400 Chamonix-Mont-Blanc, France")
+places_table.insert(title: "Gite Le Vagabond", 
+                    description: "Set in an 1860s coach house, this budget hostel is a 15-minute walk from several ski slopes and 1.3 km from the Train du Montenvers-Mer de Glace.",
+                    location: "365 Avenue Ravanel le Rouge, 74400 Chamonix-Mont-Blanc, France")
 
-places_table.insert(title: "Hotel Edelweiss", 
-                    description: "Set at the foot of Mont Blanc, this cozy, family-run mountain hotel is 8 minutes' walk from Courmayeur Mont Blanc Funivie tramway and 7 km from Pointe Helbronner mountain.",
-                    location: "Str. Grand Ru, 1, 11013 Courmayeur AO, Italy")
+places_table.insert(title: "Chalet Hotel Les Campanules", 
+                    description: "Overlooking Mont Blanc and the Aiguille du Midi mountain, this chalet hotel is 2 km from the ski lifts in Les Houches.",
+                    location: "450 Route de Coupeau, 74310 Les Houches, France")
 
-places_table.insert(title: "La Folie Douce", 
-                    description: "This hip hotel with ski-in/ski-out access is 8 minutes' walk from Chamonix-Mont-Blanc train station, and within 12 km of Mont Blanc and Le Brévent mountains.",
+places_table.insert(title: "Hôtel Mont-Blanc", 
+                    description: "This upscale hotel sits in Chamonix-Mont-Blanc town center, surrounded by mountains, and is a 10-minute walk from the ski lifts at Brévent.",
                     location: "823 Allée Recteur Payot, 74400 Chamonix-Mont-Blanc, France")
 
 puts "Success!"
