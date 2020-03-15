@@ -38,6 +38,6 @@ places_table.insert(title: "Chalet Hotel Les Campanules",
 
 places_table.insert(title: "Hôtel Mont-Blanc", 
                     description: "This upscale hotel sits in Chamonix-Mont-Blanc town center, surrounded by mountains, and is a 10-minute walk from the ski lifts at Brévent.",
-                    location: "823 Allée Recteur Payot, 74400 Chamonix-Mont-Blanc, France")
+                    location: "62 Allée du Majestic, 74400 Chamonix-Mont-Blanc, France")
 
 puts "Success!"
